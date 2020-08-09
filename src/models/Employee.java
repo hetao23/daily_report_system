@@ -11,7 +11,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
-@Table(name = "emplyees")
+@Table(name = "employees")
 @NamedQueries({
     @NamedQuery(
             name = "getAllEmployees",
@@ -37,10 +37,10 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "code", nullable = false)
+    @Column(name = "code", nullable = false, unique = true)
     private String code;
 
-    @Column(name = "name", nullable = false, unique = true)
+    @Column(name = "name", nullable = false)
     private String name;
 
     @Column(name = "password", length = 64, nullable = false)
@@ -55,7 +55,7 @@ public class Employee {
     @Column(name = "updated_at", nullable = false)
     private Timestamp updated_at;
 
-    @Column(name = "delete_flag", nullable =false)
+    @Column(name = "delete_flag", nullable = false)
     private Integer delete_flag;
 
     public Integer getId() {
